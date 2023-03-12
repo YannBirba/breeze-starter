@@ -1,0 +1,349 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /sanctum/csrf-cookie:
+    get:
+      summary: 'Return an empty response simply to trigger the storage of the CSRF cookie in the browser.'
+      operationId: returnAnEmptyResponseSimplyToTriggerTheStorageOfTheCSRFCookieInTheBrowser
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        204:
+          description: ''
+      tags:
+        - Endpoints
+      security: []
+  /api/user:
+    get:
+      summary: ''
+      operationId: getApiUser
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /register:
+    post:
+      summary: 'Handle an incoming registration request.'
+      operationId: handleAnIncomingRegistrationRequest
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'This field must not be greater than 255 characters.'
+                  example: ndyhacaaacznowoxzztsxawzw
+                email:
+                  type: string
+                  description: 'This field must be a valid email address. This field must not be greater than 255 characters.'
+                  example: ruecker.ila@example.com
+                password:
+                  type: string
+                  description: ''
+                  example: dolor
+              required:
+                - name
+                - email
+                - password
+      security: []
+  /login:
+    post:
+      summary: 'Handle an incoming authentication request.'
+      operationId: handleAnIncomingAuthenticationRequest
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'This field must be a valid email address.'
+                  example: catalina62@example.org
+                password:
+                  type: string
+                  description: ''
+                  example: 'P"cMW3Gb[#x3O/U+'
+              required:
+                - email
+                - password
+      security: []
+  /forgot-password:
+    post:
+      summary: 'Handle an incoming password reset link request.'
+      operationId: handleAnIncomingPasswordResetLinkRequest
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'This field must be a valid email address.'
+                  example: camylle27@example.net
+              required:
+                - email
+      security: []
+  /reset-password:
+    post:
+      summary: 'Handle an incoming new password request.'
+      operationId: handleAnIncomingNewPasswordRequest
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: ''
+                  example: esse
+                email:
+                  type: string
+                  description: 'This field must be a valid email address.'
+                  example: gage.senger@example.com
+                password:
+                  type: string
+                  description: ''
+                  example: repudiandae
+              required:
+                - token
+                - email
+                - password
+      security: []
+  '/verify-email/{id}/{hash}':
+    get:
+      summary: "Mark the authenticated user's email address as verified."
+      operationId: markTheAuthenticatedUsersEmailAddressAsVerified
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the verify email.'
+        example: dolor
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: hash
+        description: ''
+        example: ut
+        required: true
+        schema:
+          type: string
+  /email/verification-notification:
+    post:
+      summary: 'Send a new email verification notification.'
+      operationId: sendANewEmailVerificationNotification
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /logout:
+    post:
+      summary: 'Destroy an authenticated session.'
+      operationId: destroyAnAuthenticatedSession
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''
